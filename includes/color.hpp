@@ -2,6 +2,7 @@
 #define COLOR_HPP
 
 #define END "\033[0m"
+#define CLEAR "\033[2J"
 #define BOLD "\033[1m"
 #define BLACK "\033[30m"
 #define RED "\033[31m"

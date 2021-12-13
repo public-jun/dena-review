@@ -1,26 +1,23 @@
 #include <Board.hpp>
 #include <Player.hpp>
+#include <Master.hpp>
 
 int main(void)
 {
 	Board board;
-	Player first(Player::kFirst);
-	Player second(Player::kLast);
-	// Player &tmp = first;
+	Player first(Player::kCYAN);
+	Player second(Player::kRED);
+	Master master(board, first, second);
 
 	bool is_continue = true;
 
+	std::cout << CLEAR << std::endl;
 	board.printBoard();
 	while (is_continue)
 	{
-		//入力を求める
-		std::string input;
-		std::cout << "行番号(1 ~ 7)を入力してください" << std::endl;
-		if (!std::getline(std::cin, input))
-			break;
-		//Boardにセット
-
-		//表示
+		master.inputNum();
+		master.printBoard();
+		master.changeTurn();
 	}
 	return (0);
 }

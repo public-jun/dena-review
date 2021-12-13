@@ -14,26 +14,17 @@ Board::Board()
 
 Board::~Board() {}
 
-void Board::printHeader() const
-{
-	for(int col = 0; col < kWidth; ++col)
-	{
-		std::cout << "____";
-	}
-	std::cout << "_" << std::endl;
-}
-
 void Board::printFooter() const
 {
 	for(int col = 0; col < kWidth; ++col)
 	{
 		std::cout << "  " << col + 1 << " ";
 	}
+	std::cout << std::endl;
 }
 
 void Board::printBoard() const
 {
-	// printHeader();
 	for (int row = 0; row < kHeight; ++row)
 	{
 		for (int col = 0; col < kWidth; ++col)

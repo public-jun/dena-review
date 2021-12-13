@@ -17,7 +17,6 @@ class Board
 		static const int kHeight = 6;
 		int board_[kHeight][kWidth];
 
-		void printHeader() const;
 		void printFooter() const;
 };
 

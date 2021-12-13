@@ -6,7 +6,8 @@ INCLUDE := -I./includes
 
 SRCDIR := ./srcs/
 SRCNAME := main.cpp \
-		   Board.cpp
+		   Board.cpp \
+		   Player.cpp
 
 SRCS := $(addprefix $(SRCDIR),$(SRCNAME))
 OBJS := $(SRCS:.cpp=.o)

@@ -14,6 +14,36 @@ Board::Board()
 
 Board::~Board() {}
 
+Board::Board(const Board &other)
+{
+	*this = other;
+}
+
+Board &Board::operator=(const Board &other)
+{
+	if (this != &other)
+	{
+		for (int row = 0; row < kHeight; ++row)
+		{
+			for (int col = 0; col < kWidth; ++col)
+			{
+				board_[row][col] = other.getPiece(row, col);
+			}
+		}
+	}
+	return (*this);
+}
+
+int Board::getPiece(int row, int col) const
+{
+	return (board_[row][col]);
+}
+
+void Board::setPiece(int piece, int row, int col)
+{
+	board_[row][col] = piece;
+}
+
 void Board::printFooter() const
 {
 	for(int col = 0; col < kWidth; ++col)
@@ -25,7 +55,7 @@ void Board::printFooter() const
 
 void Board::printBoard() const
 {
-	std::cout << CLEAR << std::endl;
+	// std::cout << CLEAR << std::endl;
 	for (int row = 0; row < kHeight; ++row)
 	{
 		for (int col = 0; col < kWidth; ++col)
@@ -58,6 +88,24 @@ void Board::bePlacedPiece(int piece, int col)
 		}
 	}
 	throw(BoardException("この行には駒は置けません"));
+}
+
+
+Board Board::generateJudgeBoard(int piece)
+{
+	Board judge_board;
+
+	for (int row = 0; row < kHeight; ++row)
+	{
+		for (int col = 0; col < kWidth; ++col)
+		{
+			if (board_[row][col] != piece)
+				judge_board.setPiece(0, row, col);
+			else
+				judge_board.setPiece(piece, row, col);
+		}
+	}
+	return (judge_board);
 }
 
 Board::BoardException::BoardException(const char *msg)

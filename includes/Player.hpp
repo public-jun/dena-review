@@ -9,8 +9,8 @@ class Player
 		Player &operator=(const Player &other);
 		~Player();
 
-		static const int kCYAN = 1;
-		static const int kRED = -1;
+		static const int kP1 = 1;
+		static const int kP2 = -1;
 
 		int getPiece() const;
 		int getMove() const;

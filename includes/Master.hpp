@@ -13,14 +13,20 @@ class Master
 		explicit Master(Board &board, Player &p1, Player &p2);
 		~Master();
 
+		Board &getBoard();
+
 		void inputNum();
 		void printBoard();
 		void changeTurn();
+		void judgeWinner(bool &is_continue);
 
 	private:
 		Master();
 		Master(const Master &);
 		Master &operator=(const Master &);
+
+		static const int kWidth = 7;
+		static const int kHeight = 6;
 		Board &board_;
 		Player *tmp_;
 		Player &p1_;

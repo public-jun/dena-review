@@ -5,6 +5,11 @@ Master::Master(Board &board, Player &p1, Player &p2) :
 
 Master::~Master() {}
 
+Board &Master::getBoard()
+{
+	return (board_);
+}
+
 void Master::inputNum()
 {
 	bool is_continue = true;
@@ -36,6 +41,15 @@ void Master::inputNum()
 void Master::printBoard()
 {
 	board_.printBoard();
+}
+
+
+void Master::judgeWinner(bool &is_continue)
+{
+	Board judge_board = board_.generateJudgeBoard(tmp_->getPiece());
+	judge_board.printBoard();
+	(void)is_continue;
+	// is_continue = false;
 }
 
 void Master::changeTurn()

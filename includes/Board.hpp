@@ -12,9 +12,15 @@ class Board
 	public:
 		Board();
 		~Board();
-		void printBoard() const;
+		Board(const Board &other);
+		Board &operator=(const Board &other);
 
+		int getPiece(int row, int col) const;
+		void setPiece(int piece, int row, int col);
+
+		void printBoard() const;
 		void bePlacedPiece(int piece, int col);
+		Board generateJudgeBoard(int piece);
 
 		class BoardException : public std::exception
 		{
@@ -27,8 +33,6 @@ class Board
 		};
 
 	private:
-		Board(const Board &other);
-		Board &operator=(const Board &other);
 		static const int kWidth = 7;
 		static const int kHeight = 6;
 		int board_[kHeight][kWidth];

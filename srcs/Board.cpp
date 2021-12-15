@@ -73,7 +73,7 @@ void Board::printBoard() const
 	printFooter();
 }
 
-void Board::bePlacedPiece(int piece, int col)
+int Board::bePlacedPiece(int piece, int col)
 {
 	if (col < 1 || col > 7)
 	{
@@ -84,7 +84,7 @@ void Board::bePlacedPiece(int piece, int col)
 		if (board_[kHeight - i - 1][col - 1] == 0)
 		{
 			board_[kHeight - i - 1][col - 1] = piece;
-			return ;
+			return (kHeight - i);
 		}
 	}
 	throw(BoardException("この行には駒は置けません"));

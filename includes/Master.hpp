@@ -19,6 +19,7 @@ class Master
 		void printBoard();
 		void changeTurn();
 		void judgeWinner(bool &is_continue);
+		bool is_victory_col(Board &board);
 
 	private:
 		Master();

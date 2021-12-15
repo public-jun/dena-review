@@ -24,7 +24,8 @@ void Master::inputNum()
 		try
 		{
 			int col = std::stoi(input);
-			board_.bePlacedPiece(tmp_->getPiece(), col);
+			int row = board_.bePlacedPiece(tmp_->getPiece(), col);
+			tmp_->setMove(col - 1, row - 1);
 			is_continue = false;
 		}
 		catch(const std::invalid_argument& e)
@@ -43,13 +44,47 @@ void Master::printBoard()
 	board_.printBoard();
 }
 
+bool Master::is_victory_col(Board &board)
+{
+	board.printBoard();
+	int fixed_row = tmp_->getMoveRow();
+	int total_points = tmp_->getPiece();
+	int piece = tmp_->getPiece();
+	for (int i = tmp_->getMoveCol() - 1; i >= 0 ; --i)
+	{
+		if (board.getPiece(fixed_row, i) == piece)
+			total_points += piece;
+		else
+			break;
+	}
+	for (int i = tmp_->getMoveCol() + 1; i < kWidth ; ++i)
+	{
+		if (board.getPiece(fixed_row, i) == piece)
+			total_points += piece;
+		else
+			break;
+	}
+	if (piece == Player::kP1 && total_points >= 4)
+		return (true);
+	else if (piece == Player::kP2 && total_points <= -4)
+		return (true);
+	return (false);
+}
+
 
 void Master::judgeWinner(bool &is_continue)
 {
+
 	Board judge_board = board_.generateJudgeBoard(tmp_->getPiece());
-	judge_board.printBoard();
-	(void)is_continue;
-	// is_continue = false;
+	if (is_victory_col(judge_board))
+	{
+		// print_winner();
+		is_continue = false;
+	}
+	// 	|| is_victory_row(tmp, judge_board)
+	// 	|| is_victory_slash(tmp, judge_board)
+	// 	|| is_victory_back_slash(tmp, judge_board))
+	(void) is_continue;
 }
 
 void Master::changeTurn()

@@ -19,7 +19,7 @@ class Board
 		void setPiece(int piece, int row, int col);
 
 		void printBoard() const;
-		void bePlacedPiece(int piece, int col);
+		int bePlacedPiece(int piece, int col);
 		Board generateJudgeBoard(int piece);
 
 		class BoardException : public std::exception

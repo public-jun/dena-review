@@ -13,13 +13,18 @@ class Player
 		static const int kP2 = -1;
 
 		int getPiece() const;
-		int getMove() const;
+		int getMoveCol() const;
+		int getMoveRow() const;
+		void setMoveCol(int col);
+		void setMoveRow(int row);
+		void setMove(int col, int row);
 
 	private:
 		Player();
 
 		int piece_;
-		int move_;
+		int move_col_;
+		int move_row_;
 };
 
 #endif

@@ -50,12 +50,12 @@ void Board::printFooter() const
 	{
 		std::cout << "  " << col + 1 << " ";
 	}
-	std::cout << std::endl;
+	std::cout << '\n' <<std::endl;
 }
 
 void Board::printBoard() const
 {
-	// std::cout << CLEAR << std::endl;
+	std::cout << CLEAR << std::endl;
 	for (int row = 0; row < kHeight; ++row)
 	{
 		for (int col = 0; col < kWidth; ++col)

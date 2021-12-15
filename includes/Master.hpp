@@ -19,10 +19,12 @@ class Master
 		void printBoard();
 		void changeTurn();
 		void judgeWinner(bool &is_continue);
-		bool is_victory_col(Board &board);
-		bool is_victory_row(Board &board);
-		bool is_victory_slash(Board &board);
-		bool is_victory_back_slash(Board &board);
+		bool isVictoryCol(Board &board);
+		bool isVictoryRow(Board &board);
+		bool isVictorySlash(Board &board);
+		bool isVictoryBackSlash(Board &board);
+
+		void printWinner();
 
 	private:
 		Master();

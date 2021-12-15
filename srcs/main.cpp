@@ -11,14 +11,11 @@ int main(void)
 
 	bool is_continue = true;
 
-	// std::cout << CLEAR << std::endl;
 	while (is_continue)
 	{
 		master.inputNum();
-		//勝利判定
 		master.judgeWinner(is_continue);
 		master.changeTurn();
-		master.printBoard();
 	}
 	return (0);
 }

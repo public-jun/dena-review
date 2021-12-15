@@ -46,10 +46,10 @@ void Master::printBoard()
 
 bool Master::is_victory_col(Board &board)
 {
-	// board.printBoard();
 	int fixed_row = tmp_->getMoveRow();
 	int total_points = tmp_->getPiece();
 	int piece = tmp_->getPiece();
+
 	for (int i = tmp_->getMoveCol() - 1; i >= 0 ; --i)
 	{
 		if (board.getPiece(fixed_row, i) == piece)
@@ -73,7 +73,6 @@ bool Master::is_victory_col(Board &board)
 
 bool Master::is_victory_row(Board &board)
 {
-	// board.printBoard();
 	int fixed_col = tmp_->getMoveCol();
 	int total_points = tmp_->getPiece();
 	int piece = tmp_->getPiece();
@@ -92,12 +91,51 @@ bool Master::is_victory_row(Board &board)
 	return (false);
 }
 
+bool Master::is_victory_slash(Board &board)
+{
+	board.printBoard();
+	int col = tmp_->getMoveCol() - 1;
+	int row = tmp_->getMoveRow() + 1;
+	int total_points = tmp_->getPiece();
+	int piece = tmp_->getPiece();
+
+	//左下方向
+	while (row < kHeight && col >= 0)
+	{
+		if (board.getPiece(row, col) == piece)
+			total_points += piece;
+		else
+			break;
+		++row;
+		--col;
+	}
+
+	//右下方向
+	col = tmp_->getMoveCol() + 1;
+	row = tmp_->getMoveRow() - 1;
+	while (row >= 0 && col < kWidth)
+	{
+		if (board.getPiece(row, col) == piece)
+			total_points += piece;
+		else
+			break;
+		--row;
+		++col;
+	}
+	if (piece == Player::kP1 && total_points >= 4)
+		return (true);
+	else if (piece == Player::kP2 && total_points <= -4)
+		return (true);
+	return (false);
+}
+
 void Master::judgeWinner(bool &is_continue)
 {
 
 	Board judge_board = board_.generateJudgeBoard(tmp_->getPiece());
 	if (is_victory_col(judge_board)
-		|| is_victory_row(judge_board))
+		|| is_victory_row(judge_board)
+		|| is_victory_slash(judge_board))
 	{
 		// print_winner();
 		is_continue = false;

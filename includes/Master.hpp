@@ -21,6 +21,7 @@ class Master
 		void judgeWinner(bool &is_continue);
 		bool is_victory_col(Board &board);
 		bool is_victory_row(Board &board);
+		bool is_victory_slash(Board &board);
 
 	private:
 		Master();

@@ -12,14 +12,13 @@ int main(void)
 	bool is_continue = true;
 
 	// std::cout << CLEAR << std::endl;
-	board.printBoard();
 	while (is_continue)
 	{
 		master.inputNum();
-		master.printBoard();
 		//勝利判定
 		master.judgeWinner(is_continue);
 		master.changeTurn();
+		master.printBoard();
 	}
 	return (0);
 }

@@ -23,7 +23,6 @@ class Master
 		bool isVictoryRow(Board &board);
 		bool isVictorySlash(Board &board);
 		bool isVictoryBackSlash(Board &board);
-
 		void printWinner();
 
 	private:
@@ -37,7 +36,6 @@ class Master
 		Player *tmp_;
 		Player &p1_;
 		Player &p2_;
-
 };
 
 #endif

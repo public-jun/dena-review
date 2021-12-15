@@ -15,6 +15,7 @@ int main(void)
 	{
 		master.inputNum();
 		master.judgeWinner(is_continue);
+		master.isDraw(is_continue);
 		master.changeTurn();
 	}
 	return (0);

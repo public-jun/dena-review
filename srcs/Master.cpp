@@ -1,7 +1,7 @@
 #include <Master.hpp>
 
 Master::Master(Board &board, Player &p1, Player &p2) :
-	board_(board), tmp_(&p1), p1_(p1), p2_(p2) {}
+	count_turns(0), board_(board), tmp_(&p1), p1_(p1), p2_(p2) {}
 
 Master::~Master() {}
 
@@ -29,6 +29,7 @@ void Master::inputNum()
 			int col = std::stoi(input);
 			int row = board_.bePlacedPiece(tmp_->getPiece(), col);
 			tmp_->setMove(col - 1, row - 1);
+			++count_turns;
 			is_continue = false;
 		}
 		catch(const std::invalid_argument& e)
@@ -177,6 +178,16 @@ void Master::judgeWinner(bool &is_continue)
 		|| isVictoryBackSlash(judge_board))
 	{
 		printWinner();
+		is_continue = false;
+	}
+}
+
+void Master::isDraw(bool &is_continue)
+{
+	if (count_turns == kMaxTurn)
+	{
+		printBoard();
+		std::cout << "引き分けです" << std::endl;
 		is_continue = false;
 	}
 }

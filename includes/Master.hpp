@@ -17,13 +17,17 @@ class Master
 
 		void inputNum();
 		void printBoard();
-		void changeTurn();
+
 		void judgeWinner(bool &is_continue);
 		bool isVictoryCol(Board &board);
 		bool isVictoryRow(Board &board);
 		bool isVictorySlash(Board &board);
 		bool isVictoryBackSlash(Board &board);
 		void printWinner();
+
+		void isDraw(bool &is_continue);
+
+		void changeTurn();
 
 	private:
 		Master();
@@ -32,6 +36,8 @@ class Master
 
 		static const int kWidth = 7;
 		static const int kHeight = 6;
+		static const int kMaxTurn = 42;
+		int count_turns;
 		Board &board_;
 		Player *tmp_;
 		Player &p1_;

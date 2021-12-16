@@ -28,7 +28,7 @@ This program built for i386-apple-darwin11.3.0
  ## 遊び方
  ```bash
 $ git clone https://github.com/public-jun/dena-review.git
-$ cd denea-review
+$ cd dena-review
 $ make
 $ ./Yonmoku
  ```

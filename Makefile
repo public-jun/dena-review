@@ -1,6 +1,6 @@
 NAME := Yonmoku
 CXX :=clang++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS := -Wall -Wextra -Werror
 
 INCLUDE := -I./includes
 
